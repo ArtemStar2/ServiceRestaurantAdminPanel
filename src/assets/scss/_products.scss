@@ -1,0 +1,134 @@
+.product{
+    &__list{
+        display: flex;
+        flex-direction: column;
+        & > *:not(:last-child){
+            margin-bottom: 20px;
+        }
+        & > *{
+            display: grid;
+            grid-template-columns: 30px repeat(4, 1fr) 50px;
+            gap: 50px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ffffff46;
+        }
+    }
+    &__item{
+        img{
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+        & > *{
+            display: flex;
+            align-items: center;
+        }
+        .delete{
+            cursor: pointer;
+        }
+    }
+    &__box{
+        display: flex;
+        justify-content: space-between;
+        &.two{
+            gap: 50px;
+            margin-bottom: 50px;
+            & > *{
+                width: 50%;
+                box-sizing: border-box;
+            }
+            img{
+                width: 100%;
+                height: auto;
+                max-height: 100%;
+                object-fit: cover;
+            }
+            .left{
+                display: flex;
+                flex-direction: column;
+                input, textarea{
+                    width: 100%;
+                }
+                input{
+                    margin-bottom: 40px;
+                }
+                textarea{
+                    height: 100%;
+                    box-sizing: border-box;
+                }
+                span{
+                    font-size: 20px;
+                    margin-bottom: 10px;
+                }
+            }
+            .right{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                label{
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    width: fit-content;
+                    margin: 20px auto;
+                    padding: 20px 30px;
+                    border-radius: 10px;
+                    background: #0f0f0f;
+                    input{
+                        display: none;
+                    }
+                }
+            }
+        }
+        &.three{
+            align-items: center;
+            .box{
+                display: flex;
+                flex-direction: column;
+                span{
+                    font-size: 20px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+}
+:root{
+    --bg-secondary: #0f0f0f;
+    --border-color: #000;
+    --bg-primary: #000;
+}
+.react-select-container {
+    .react-select__control {
+      background-color: var(--bg-secondary);
+      border-color: var(--border-color);
+      transition: none;
+  
+      &:hover {
+        border-color: var(--border-color);
+      }
+    }
+  
+    .react-select__menu {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+    }
+  
+    .react-select__option {
+      background-color: var(--bg-secondary);
+  
+      &:hover {
+        background-color: var(--bg-primary);
+      }
+    }
+  
+    .react-select__indicator-separator {
+      background-color: var(--border-color);
+    }
+  
+    .react-select__placeholder,
+    .react-select__single-value {
+      color: var(--text-primary);
+    }
+  }

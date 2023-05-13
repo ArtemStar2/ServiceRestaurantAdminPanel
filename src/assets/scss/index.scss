@@ -1,0 +1,105 @@
+:root{
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+}
+a { 
+    text-decoration: none;
+    color: #0A0A0A;
+}
+li{
+	list-style-type: none;
+}
+body,input, button, textarea{
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+}
+input,button,textarea{
+	box-sizing:border-box;
+	padding:0;
+    border-radius: 0;
+    border: 0;
+    background: transparent;
+    outline: 0;
+}
+.box-content{
+    width: min(100% - 30px, 1680px);
+    margin-inline: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    &__box{
+        display: flex;
+        flex-direction: column;
+    }
+}
+.input__style{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 16px;
+    &:not(:last-child){
+        margin-bottom: 20px;
+    }
+}
+.button__form{
+    width: 100%;
+    background: #141414;
+    transition: .4s;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    &:hover{
+        background: #030303;
+    }
+}
+
+.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.titleList{
+    font-size: 18px;
+    font-weight: 900;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #fff
+}
+.left__colum{
+    display: flex;
+    flex-direction: column;
+    span{
+        margin-bottom: 5px;
+    }
+}
+@import 'header';
+@import 'footer';
+@import 'sidebar';
+@import 'users';
+@import 'products';
+@import 'events';
+@import 'tables';
+@import 'order';

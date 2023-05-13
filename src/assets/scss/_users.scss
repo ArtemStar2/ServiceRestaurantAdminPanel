@@ -1,0 +1,52 @@
+.users{
+    &__list{
+        display: flex;
+        flex-direction: column;
+    }
+    &__form{
+        display: flex;
+        justify-content: end;
+        margin-bottom: 50px;
+        .input__style{
+            margin: 0;
+        }
+        & > *:not(:last-child){
+            margin-right: 20px;
+        }
+    }
+    &__add{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 250px;
+        border-radius: 10px;
+        padding: 10px 0;
+        font-size: 16px;
+        background: #f44336;
+        color: #fff;
+        transition: .4s;
+        &:hover{
+            box-shadow: 0px 0px 10px 0px #f44336;
+        }
+    }
+    &__item{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) 50px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ffffff46;
+        & > *{
+            display: flex;
+            align-items: center;
+        }
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+        .name{
+            font-size: 18px;
+            font-weight: 900;
+        }
+        .delete{
+            cursor: pointer;
+        }
+    }
+}

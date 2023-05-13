@@ -1,0 +1,35 @@
+.header{
+    padding: 20px 0;
+    background: #1e1e1e;
+    border-bottom: 1px solid #0f0f0f;
+    .box-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__logout{
+        margin-left: 20px;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #0f0f0f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div{
+            display: flex;
+        }
+        svg{
+            width: 20px;
+            height: auto;
+            path{
+                fill: #fff;
+            }
+        }
+    }
+    &__account{
+        display: flex;
+        align-items: center;
+    }
+}
