@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './assets/scss/index.scss'
 import Store from './store/store.ts'
+import { BrowserRouter } from 'react-router-dom'
 
 interface State{
   store: Store
@@ -14,9 +15,11 @@ export const Context = createContext<State>({
 })
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <Context.Provider value={{
-    store
-  }}>
-      <App />
-  </Context.Provider>,
+  <BrowserRouter>
+    <Context.Provider value={{
+      store
+    }}>
+        <App />
+    </Context.Provider>
+  </BrowserRouter>,
 )
