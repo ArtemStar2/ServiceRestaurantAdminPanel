@@ -35,7 +35,7 @@ const ProductsCreate : FC = () => {
             formData.append("category", category.value);
             await productService.createProducts(formData);
             toast.success('Успешно создан')
-            return navigate("/product");
+            return navigate("/admin/product");
         } catch (error:any) {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }

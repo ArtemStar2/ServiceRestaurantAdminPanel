@@ -74,7 +74,7 @@ const ProductsUpdate : FC = () => {
             formData.append("category", category.value);
             await productService.productUpdate(formData);
             toast.success('Успешно изменён')
-            return navigate("/product");
+            return navigate("/admin/product");
         } catch (error:any) {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }

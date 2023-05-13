@@ -11,7 +11,7 @@ interface TableItem{
 const TableItem : FC<TableItem> = ({value, tableDelete}) => {
     return (
         <li className="table__item">
-            <Link to={'/tables/' + value.id}>
+            <Link to={'/admin/tables/' + value.id}>
                 {value.userId}
             </Link>
             <span>

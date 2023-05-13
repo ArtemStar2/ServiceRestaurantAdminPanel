@@ -36,7 +36,7 @@ const Event : FC = () => {
     return (
         <>
         <div className="users__form">
-            <Link className='users__add' to={'/events/create'}>Добавить мероприятие</Link>
+            <Link className='users__add' to={'/admin/events/create'}>Добавить мероприятие</Link>
         </div>
         {loading ?
             <Loading />

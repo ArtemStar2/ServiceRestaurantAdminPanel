@@ -18,7 +18,7 @@ const OrderCreate : FC = () => {
             formData.append("products", products);
             await orderService.createOrder(formData);
             toast.success('Успешно создан')
-            return navigate("/orders");
+            return navigate("/admin/orders");
         } catch (error:any) {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }

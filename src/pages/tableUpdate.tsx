@@ -44,7 +44,7 @@ const TableUpdate : FC = () => {
             formData.append("table_id", table_id);
             await tableService.TableUpdate(formData);
             toast.success('Успешно создан')
-            return navigate("/tables");
+            return navigate("/admin/tables");
         } catch (error:any) {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }

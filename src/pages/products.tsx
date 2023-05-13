@@ -37,7 +37,7 @@ const Products : FC = () => {
     return (
         <>
         <div className="users__form">
-            <Link className='users__add' to={'/product/create'}>Добавить товар</Link>
+            <Link className='users__add' to={'/admin/product/create'}>Добавить товар</Link>
         </div>
         {loading ?
             <Loading />

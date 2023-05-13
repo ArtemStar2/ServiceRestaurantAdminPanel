@@ -15,7 +15,7 @@ const ProductItem : FC<ProductItem> = ({value, deleteProduct}) => {
             <span className="name">
                 {value.id}
             </span>
-            <Link to={'/product/' + value.id}>
+            <Link to={'/admin/product/' + value.id}>
                 <img src={import.meta.env.VITE_URL_DATABASE + import.meta.env.VITE_FILE + value.images} alt="" />
             </Link>
             <span className="name">

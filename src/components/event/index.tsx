@@ -11,7 +11,7 @@ interface EventItem{
 const EventItem : FC<EventItem> = ({value, deleteEvent}) => {
     return (
         <li className="event__item">
-            <Link to={'/events/' + value.id}>
+            <Link to={'/admin/events/' + value.id}>
                 <img src={import.meta.env.VITE_URL_DATABASE + import.meta.env.VITE_FILE + value.images} alt="" />
             </Link>
             <span className="name">
