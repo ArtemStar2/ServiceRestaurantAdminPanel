@@ -15,10 +15,10 @@ const TableItem : FC<TableItem> = ({value, tableDelete}) => {
                 {value.userId}
             </Link>
             <span>
-                {value.dateStart.split('T')[0] + '  ' + value.dateStart.split('T')[1]}
+                {value?.datestart.split('T')[0] + '  ' + value?.datestart.split('T')[1]}
             </span>
             <span>
-                {value.dateEnd.split('T')[0] + '  ' + value.dateEnd.split('T')[1]}   
+                {value?.dateend.split('T')[0] + '  ' + value?.dateend.split('T')[1]}   
             </span>
             <span>
                 {value.table_id}
