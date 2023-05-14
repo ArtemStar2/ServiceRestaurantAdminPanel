@@ -43,7 +43,6 @@ const Event : FC = () => {
         :
             <ul className="event__list">
                 <li className="event__item titleList">
-                    <span>Картинка</span>
                     <span>Название</span>
                     <span>Дата</span>
                     <span></span>
