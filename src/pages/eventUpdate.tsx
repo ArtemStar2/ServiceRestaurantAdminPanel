@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, ChangeEvent } from "react";
+import { FC, useEffect, useState } from "react";
 import eventService from '../services/eventService'
 import { IEvent } from "../models/IEvent";
 import toast from "react-hot-toast";
@@ -11,7 +11,6 @@ const EventUpdate : FC = () => {
     const params = useParams();
     const [event, setEvent] = useState<IEvent>()
     const [loading, setLoading] = useState<boolean>(true)
-    const [images, setImages] = useState<string>('');
     useEffect(() => {
         getEvent();
     }, [])
@@ -19,15 +18,6 @@ const EventUpdate : FC = () => {
 
     const [date, setDate] = useState<string>('');
     const [name, setName] = useState<string>('');
-    const [file, setFile] = useState<File | any>();
-
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.files)
-        if (e.target.files) {
-          setFile(e.target.files[0]);
-          
-        }
-    };
 
     async function getEvent() {
         try {
@@ -38,20 +28,18 @@ const EventUpdate : FC = () => {
             setEvent(response.data)
             setName(response.data.name)
             setDate(response.data.date)
-            setImages(response.data.images)
             setLoading(false);
         } catch (error: any) {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }
     }
 
-    const eventUpdate = async (id: any,name: string, date: string, images:File) => {
+    const eventUpdate = async (id: any,name: string, date: string) => {
         try {
             const formData = new FormData();
             formData.append("id", id);
             formData.append("name", name);
             formData.append("date", date);
-            formData.append("images", images);
             await eventService.EventUpdate(formData);
             getEvent()
             toast.success('Успешно создан')
@@ -68,7 +56,7 @@ const EventUpdate : FC = () => {
         :
             <>
                 <div className="product__box two">
-                    <div className="left">
+                    <div className="left__colum">
                         <span>Название</span>
                         <input
                             name={'name'}
@@ -87,14 +75,7 @@ const EventUpdate : FC = () => {
                             type="datetime-local"
                             placeholder={'Дата'}
                         />
-                        <button className='users__add' onClick={() => eventUpdate(event?.id, name, date, file)}>Изменить мероприятие</button>
-                    </div>
-                    <div className="right">
-                        <img src={import.meta.env.VITE_URL_DATABASE + import.meta.env.VITE_FILE + images} alt="" />
-                        <label htmlFor="photo">
-                            {file?.name ? file.name : 'Загрузить фото'}
-                            <input id="photo" name={'file'} type="file" onChange={handleFileChange} />
-                        </label>
+                        <button className='users__add' onClick={() => eventUpdate(event?.id, name, date)}>Изменить мероприятие</button>
                     </div>
                 </div>
             </>
