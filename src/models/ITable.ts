@@ -1,6 +1,6 @@
 export interface ITable{
     id: string;
-    userId: number;
+    userid: number;
     datestart: string;
     dateend: string;
     table_id: string;
