@@ -29,7 +29,6 @@ const App = () => {
             store.chechAuth()
         }
     }, [])
-    console.log(document.cookie);
     return (
         <>
         {store.isLoading ? 
