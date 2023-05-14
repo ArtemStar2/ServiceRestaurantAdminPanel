@@ -38,8 +38,9 @@ const ProductsUpdate : FC = () => {
         try {
             const response = await productService.fetchProductOne(params.id)
             if(!response.data){
-                return navigate("/events");
+                return navigate("/admin/product");
             }
+            console.log(response);
             setProduct(response.data);
             setName(response.data.name)
             setDescription(response.data.description)
