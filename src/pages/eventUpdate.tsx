@@ -23,7 +23,7 @@ const EventUpdate : FC = () => {
         try {
             const response = await eventService.fetchEventOne(params.id)
             if(!response.data){
-                return navigate("/events");
+                return navigate("/admin/events");
             }
             setEvent(response.data)
             setName(response.data.name)

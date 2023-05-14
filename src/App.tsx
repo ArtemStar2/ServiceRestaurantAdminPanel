@@ -29,6 +29,7 @@ const App = () => {
             store.chechAuth()
         }
     }, [])
+    console.log(store);
     return (
         <>
         {store.isLoading ? 
