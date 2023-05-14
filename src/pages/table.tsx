@@ -33,6 +33,7 @@ const Event : FC = () => {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }
     }
+    console.log(tables)
     return (
         <>
         <div className="users__form">
