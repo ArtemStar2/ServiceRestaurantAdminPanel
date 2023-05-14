@@ -26,8 +26,8 @@ const TableUpdate : FC = () => {
                 return navigate("/events");
             }
             setItem(response.data)
-            setDateStart(response.data.dateStart)
-            setDateEnd(response.data.dateEnd)
+            setDateStart(response.data.datestart)
+            setDateEnd(response.data.dateend)
             setTable(response.data.table_id)
             setLoading(false);
         } catch (error: any) {

@@ -14,12 +14,12 @@ const TableItem : FC<TableItem> = ({value, tableDelete}) => {
             <Link to={'/admin/tables/' + value.id}>
                 {value.userId}
             </Link>
-            {/* <span>
+            <span>
                 {value?.datestart.split('T')[0] + '  ' + value?.datestart.split('T')[1]}
             </span>
             <span>
                 {value?.dateend.split('T')[0] + '  ' + value?.dateend.split('T')[1]}   
-            </span> */}
+            </span>
             <span>
                 {value.table_id}
             </span>
