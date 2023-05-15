@@ -39,7 +39,7 @@ const OrderItem : FC<OrderItem> = ({value, deleteOrder}) => {
                 {value.userid}
             </span>
             <span>
-                {value.date.split('T')[0] + '  ' + value.date.split('T')[1]}
+                {value.date.split('T')[0] + ' ' + value.date.split('T')[1].split(':')[0]+ ':' + value.date.split('T')[1].split(':')[1]}
             </span>
             <span className="price">{price} руб.</span>
             <span className="order__product-list" >

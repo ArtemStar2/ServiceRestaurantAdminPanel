@@ -3,4 +3,5 @@ export interface IEvent{
     name: string;
     date: string;
     images:string;
+    description:string;
 }

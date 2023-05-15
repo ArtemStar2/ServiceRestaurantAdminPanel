@@ -23,6 +23,8 @@ import MenuList from './client/product'
 import ProductOneClient from './client/product/component/itemPage'
 import OrderClient from './client/product/OrderClient'
 import { toJS } from 'mobx'
+import EventList from './client/event'
+import EventItemOne from './client/event/item'
 
 declare const window: any;
 
@@ -47,6 +49,8 @@ const App = () => {
                 <Route path="/menu/:id" element={<ProductOneClient />}/>
                 <Route path="/menu/category/:code" element={<MenuList />}/>
                 <Route path="/order" element={<OrderClient />}/>
+                <Route path="/event" element={<EventList />}/>
+                <Route path="/event/:id" element={<EventItemOne />}/>
                 <Route path="/admin" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin" ? <LoginForm /> :<div>Панель</div>}/>
                 <Route path="/admin/users" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <Users />}/>
                 <Route path="/admin/product" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <Products />}/>

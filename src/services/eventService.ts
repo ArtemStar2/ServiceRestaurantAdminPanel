@@ -7,8 +7,8 @@ export default class eventService{
     static fetchEvent():Promise<AxiosResponse<IEvent[]>>{
         return $api.get<IEvent[]>('/api/events')
     }
-    static fetchEventOne(id: string | undefined):Promise<AxiosResponse<IEvent>>{
-        return $api.get<IEvent>('/api/events/' + id)
+    static fetchEventOne(id: string | undefined):Promise<AxiosResponse<IEvent[]>>{
+        return $api.get<IEvent[]>('/api/events/' + id)
     }
     
     static deleteEvents(eventId: string):Promise<AxiosResponse<ResponseSolo>>{
