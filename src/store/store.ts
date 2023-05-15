@@ -6,6 +6,10 @@ import { authResponse } from "../models/response/authResponse";
 import { API_URL } from "../http";
 import toast from "react-hot-toast";
 
+declare const window: any;
+
+const tg = window?.Telegram?.WebApp;
+
 interface Order{
     id: string | undefined;
     count: number;
@@ -91,6 +95,13 @@ export default class Store{
             this.setAuth(true);
             this.setUser(response.data.user)
         } catch(e ){
+            if(tg?.initDataUnsafe?.user?.id){
+                const userid = tg.initDataUnsafe.user.id;
+                const response = await authService.auth(userid)
+                localStorage.setItem('token', response.data.accessToken)
+                this.setAuth(true);
+                this.setUser(response.data.user)
+            }
             console.log((e as Error).message);
         } finally {
             this.setLoading(false)
