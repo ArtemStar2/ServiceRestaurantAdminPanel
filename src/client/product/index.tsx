@@ -8,10 +8,10 @@ const tg = window?.Telegram?.WebApp;
 
 const MenuList : FC = () => {
     console.log('asdsdsds');
-    console.log(tg);
+    console.log(tg.initData.initDataUnsafe.user);
     return (
         <div className="client">
-            {JSON.stringify(tg, null, 2)}
+            {JSON.stringify(tg.initData.initDataUnsafe.user, null, 2)}
             <SidebarProduct />
             <ListProduct />
             <OrderProduct />
