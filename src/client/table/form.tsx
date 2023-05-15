@@ -13,7 +13,7 @@ const FormTable : FC = () => {
             const formData = new FormData();
             formData.append("date", date);
             formData.append("event", params.id ? params.id : '');
-            formData.append("event", table_id);
+            formData.append("table_id", table_id);
             await tableService.createTable(formData);
             toast.success('Успешно создана')
             return navigate("/event");
