@@ -41,7 +41,6 @@ const App = () => {
     }, [])
     return (
         <>
-        {tg?.initDataUnsafe?.user?.id}
         <Layout>
             <Routes>
                 <Route path="/menu" element={<MenuList />}/>
