@@ -59,13 +59,21 @@ const ProductOneClient : FC = () => {
                             }
                         </div>
                         <div className="count">
-                            <ReactSVG className="minus" onClick={() => {
+                            <div className="minus" onClick={() => {
                                 setCount(count-1 > 0 ?count-1 : count)
-                            }} src={"/src/assets/svg/minus.svg"} /> 
+                            }}>
+                                <svg width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L17 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
                             <span className="value">{count}</span>
-                            <ReactSVG className="add" onClick={() => {
+                            <div className="add" onClick={() => {
                                 setCount(count+1)
-                            }} src={"/src/assets/svg/plus.svg"} /> 
+                            }}>
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 1V17M1 9L17 9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
                         </div>
                         <div className="button users__add" onClick={() => {
                             toast.success('Добавлен в корзину');
