@@ -35,10 +35,10 @@ const EventUpdate : FC = () => {
             if(!response.data){
                 return navigate("/events");
             }
-            setEvent(response.data)
-            setName(response.data.name)
-            setDate(response.data.date)
-            setImages(response.data.images)
+            setEvent(response.data[0])
+            setName(response.data[0].name)
+            setDate(response.data[0].date)
+            setImages(response.data[0].images)
             setLoading(false);
         } catch (error: any) {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
