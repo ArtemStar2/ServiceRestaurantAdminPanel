@@ -189,4 +189,20 @@
             margin-bottom: 10px;
         }
     }
+    &__info{
+        display: flex;
+        flex-direction: column;
+        .two{
+            margin-bottom: 20px;
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+            input{
+                margin-bottom: 0;
+            }
+            .allCost{
+                font-size: 20px;
+            }
+        }
+    }
 }

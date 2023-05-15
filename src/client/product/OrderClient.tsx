@@ -45,7 +45,7 @@ const OrderClient : FC = () => {
                     <OrderProductOne key={order.id} index={index} value={order}/> 
                 )}
             </div>
-            <div className="info">
+            <div className="orderClient__info">
                 <div className="two">
                     <input
                         name={'table_id'}
