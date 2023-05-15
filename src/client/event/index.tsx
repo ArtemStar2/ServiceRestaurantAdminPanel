@@ -32,7 +32,7 @@ const EventList : FC = () => {
             :
                 <>
                 {events?.map(event => 
-                    <Link className="eventClient__item" to={'/event/' + event.id}>
+                    <Link key={event.id} className="eventClient__item" to={'/event/' + event.id}>
                         <span className="name">{event.name}</span>
                         <span className="date">{event.date.split('T')[0] + ' ' + event.date.split('T')[1].split(':')[0]+ ':' + event.date.split('T')[1].split(':')[1]}</span>
                     </Link>   

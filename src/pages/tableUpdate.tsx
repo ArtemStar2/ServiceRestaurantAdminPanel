@@ -8,10 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 const TableUpdate : FC = () => {
     const params = useParams();
-    const [item, setItem] = useState<ITable >();
-    const [dateStart, setDateStart] = useState<string>('');
-    const [dateEnd, setDateEnd] = useState<string>('');
-    const [table, setTable] = useState<string>('');
+    const [item, setItem] = useState<ITable>();
+    const [date, setDate] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
@@ -25,23 +23,20 @@ const TableUpdate : FC = () => {
             if(!response.data){
                 return navigate("/events");
             }
-            setItem(response.data)
-            setDateStart(response.data.datestart)
-            setDateEnd(response.data.dateend)
-            setTable(response.data.table_id)
+            setItem(response.data[0])
+            setDate(response.data[0].date)
             setLoading(false);
         } catch (error: any) {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }
     }
 
-    const tableUpdate = async (id:any,dateStart: string, dateEnd: string, table_id:string) => {
+    const tableUpdate = async (id:any,date: string) => {
         try {
             const formData = new FormData();
             formData.append("id", id);
-            formData.append("dateStart", dateStart);
-            formData.append("dateEnd", dateEnd);
-            formData.append("table_id", table_id);
+            formData.append("date", date);
+            formData.append("event", '');
             await tableService.TableUpdate(formData);
             toast.success('Успешно создан')
             return navigate("/admin/tables");
@@ -60,35 +55,17 @@ const TableUpdate : FC = () => {
                     <div className="left__colum">
                         <span>Дата начала</span>
                         <input
-                            name={'dateStart'}
-                            className='input__style'
-                            onChange={e => setDateStart(e.target.value)}
-                            value={dateStart}
-                            type="datetime-local"
-                            placeholder={'Дата'}
-                        />
-                        <span>Дата</span>
-                        <input
                             name={'date'}
                             className='input__style'
-                            onChange={e => setDateEnd(e.target.value)}
-                            value={dateEnd}
+                            onChange={e => setDate(e.target.value)}
+                            value={date}
                             type="datetime-local"
                             placeholder={'Дата'}
-                        />
-                        <span>Номер стола</span>
-                        <input
-                            name={'table'}
-                            className='input__style'
-                            onChange={e => setTable(e.target.value)}
-                            value={table}
-                            type="text"
-                            placeholder={'Название'}
                         />
                     </div>
                 </div>
                 <div className="product__box three">
-                    <button className='users__add' onClick={() => tableUpdate(item?.id,dateStart, dateEnd, table)}>Изменить бронь</button>
+                    <button className='users__add' onClick={() => tableUpdate(item?.id,date)}>Изменить бронь</button>
                 </div>
             </>
         }

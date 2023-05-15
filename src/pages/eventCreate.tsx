@@ -16,7 +16,7 @@ const EventCreate : FC = () => {
             formData.append("description", description);
             await eventService.createEvents(formData);
             toast.success('Успешно создан')
-            return navigate("/admin/event");
+            return navigate("/admin/events");
         } catch (error:any) {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }

@@ -10,6 +10,9 @@ interface EventItem{
 const EventItem : FC<EventItem> = ({value, deleteEvent}) => {
     return (
         <li className="event__item">
+            <span>
+                {value?.id}
+            </span>
             <Link to={'/admin/events/' + value.id}>
                 {value.name}
             </Link>

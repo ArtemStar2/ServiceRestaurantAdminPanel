@@ -7,7 +7,7 @@ export default class tableService{
     static fetchTable():Promise<AxiosResponse<ITable[]>>{
         return $api.get<ITable[]>('/api/tables')
     }
-    static fetchTableOne(id: string | undefined):Promise<AxiosResponse<ITable>>{
+    static fetchTableOne(id: string | undefined):Promise<AxiosResponse<any>>{
         return $api.get<ITable>('/api/tables/' + id)
     }
     static deleteTables(tableId: string):Promise<AxiosResponse<ResponseSolo>>{

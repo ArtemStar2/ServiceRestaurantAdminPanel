@@ -1,26 +1,26 @@
 import { FC, useState } from "react";
-import tableService from '../services/tableService'
+import tableService from "../../services/tableService";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const TableCreate : FC = () => {
+const FormTable : FC = () => {
     const [date, setDate] = useState<string>('');
     let navigate = useNavigate();
+    const params = useParams();
     const eventCreate = async (date: string) => {
         try {
             const formData = new FormData();
             formData.append("date", date);
-            formData.append("event", '');
+            formData.append("event", params.id ? params.id : '');
             await tableService.createTable(formData);
-            toast.success('Успешно создан')
-            return navigate("/admin/tables");
+            toast.success('Успешно создана')
+            return navigate("/event");
         } catch (error:any) {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }
     }
     return (
-        <>
-        <div className="product__box two">
+        <div className="form">
             <div className="left__colum">
                 <span>Дата</span>
                 <input
@@ -32,12 +32,9 @@ const TableCreate : FC = () => {
                     placeholder={'Дата'}
                 />
             </div>
+            <button className='users__add' onClick={() => eventCreate(date)}>Забронировать</button>
         </div>
-        <div className="product__box three">
-            <button className='users__add' onClick={() => eventCreate(date)}>Создать бронь</button>
-        </div>
-        </> 
     );
 };
 
-export default TableCreate;
+export default FormTable;

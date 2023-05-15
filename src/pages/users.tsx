@@ -77,6 +77,7 @@ const Users : FC = () => {
         :
             <ul className="users__list">
                 <li className="users__item title">
+                    <span className="name">id</span>
                     <span className="name">Имя</span>
                     <span className="role">Должность</span>
                     <span></span>

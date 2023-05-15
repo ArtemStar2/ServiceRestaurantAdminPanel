@@ -1,11 +1,8 @@
-import { FC, useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { FC, useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { observer } from "mobx-react-lite";
-
 import SidebarEvent from "./component/menu";
 import eventService from "../../services/eventService";
-import { IEvent } from "../../models/IEvent";
 import Loading from "../../components/loading";
 
 const EventItemOne : FC = () => {
@@ -29,7 +26,14 @@ const EventItemOne : FC = () => {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }
     }
-    console.log(event)
+    const tableCreate = async () => {
+        try {
+            
+            return navigate("/menu/");
+        } catch (error:any) {
+            toast.error('Ошибка: ' + error?.response?.data?.massage)
+        }
+    }
     return (
         <div className="client">
             <SidebarEvent />
@@ -37,7 +41,11 @@ const EventItemOne : FC = () => {
                 {loading ?
                     <Loading />
                 :   
-                    <>{event[0]?.name}</>
+                    <div className="eventClient__page">
+                        <h2>{event[0]?.name}</h2>
+                        <p>{event[0]?.description}</p>
+                        <Link to={"/table/" + params.id} className='users__add' onClick={() => tableCreate()}>Заказать</Link>
+                    </div>
                 }
             </div>
         </div>

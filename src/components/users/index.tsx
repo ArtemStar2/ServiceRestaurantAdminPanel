@@ -10,6 +10,9 @@ const UserItem : FC<UserItem> = ({value, userDelete}) => {
     return (
         <li className="users__item">
             <span className="name">
+                {value.id}
+            </span>
+            <span className="name">
                 {value.login}
             </span>
             <span className="role">

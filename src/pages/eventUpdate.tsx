@@ -44,7 +44,7 @@ const EventUpdate : FC = () => {
             formData.append("description", description);
             await eventService.EventUpdate(formData);
             getEvent()
-            toast.success('Успешно создан')
+            toast.success('Успешно изменён')
             return navigate("/admin/events");
         } catch (error:any) {
             toast.error('Ошибка: ' + error?.response?.data?.massage)

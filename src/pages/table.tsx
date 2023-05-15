@@ -44,10 +44,10 @@ const Event : FC = () => {
         :
             <ul className="table__list">
                 <li className="table__item titleList">
+                    <span>id</span>
                     <span>Id Пользователя</span>
-                    <span>Начало</span>
-                    <span>Конец</span>
-                    <span>Номер стола</span>
+                    <span>Дата</span>
+                    <span>Мероприятие</span>
                     <span></span>
                 </li>
                 {tables?.map(table => 
