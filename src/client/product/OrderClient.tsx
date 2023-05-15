@@ -56,7 +56,7 @@ const OrderClient : FC = () => {
                         placeholder={'Номер стола'}
                     />
                     <span className="allCost">
-                    {cost}
+                    Всего: {cost} руб.
                     </span>
                 </div>
                 <button className='users__add' onClick={() => orderCreate(toJS(store.user.id), orders, table_id)}>Заказать</button>
