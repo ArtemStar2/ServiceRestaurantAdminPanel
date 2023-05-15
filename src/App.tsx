@@ -33,7 +33,7 @@ const App = () => {
     useEffect(() => {
         if(tg?.initDataUnsafe?.user?.id){
             const userid = tg.initDataUnsafe.user.id;
-            store.auth(userid)
+            store.auth(userid, '')
         }
         if(localStorage.getItem('token')){
             store.chechAuth()

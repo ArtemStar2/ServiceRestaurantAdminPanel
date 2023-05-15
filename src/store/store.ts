@@ -56,7 +56,7 @@ export default class Store{
         this.order = [];
         // this.order.push({id: id, count: count, price: price});  
     }
-    async auth(login: string, password?: string){
+    async auth(login: string, password: string){
         const id = toast.loading("Загрузка ...")
         try{
             const response = await authService.auth(login, password)

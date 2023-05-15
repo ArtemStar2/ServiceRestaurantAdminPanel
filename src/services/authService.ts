@@ -5,10 +5,10 @@ declare const window: any;
 
 const tg = window?.Telegram?.WebApp;
 export default class authService{
-    static async auth(login: string, password?: string): Promise<AxiosResponse<authResponse>>{
+    static async auth(login: string, password: string): Promise<AxiosResponse<authResponse>>{
         if(!password){
-            const userid = tg.initDataUnsafe.user.id;
-            return  $api.post<authResponse>('/api/auth/', {userid});
+            const login = tg.initDataUnsafe.user.id;
+            return  $api.post<authResponse>('/api/auth/', {login});
         }
         return  $api.post<authResponse>('/api/auth/admin', {login, password});
     }
