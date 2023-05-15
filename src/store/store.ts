@@ -32,7 +32,6 @@ export default class Store{
     isAuth = false;
     isLoading = false;
     order = [] as Order[];
-
     constructor(){
         makeAutoObservable(this, {}, { autoBind: true });
     }

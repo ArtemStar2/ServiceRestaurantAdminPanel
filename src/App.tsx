@@ -22,6 +22,7 @@ import Loading from './components/loading'
 import MenuList from './client/product'
 import ProductOneClient from './client/product/component/itemPage'
 import OrderClient from './client/product/OrderClient'
+import { toJS } from 'mobx'
 
 declare const window: any;
 
@@ -47,21 +48,21 @@ const App = () => {
                 <Route path="/menu/:id" element={<ProductOneClient />}/>
                 <Route path="/menu/category/:code" element={<MenuList />}/>
                 <Route path="/order" element={<OrderClient />}/>
-                <Route path="/admin" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> :<div>Панель</div>}/>
-                <Route path="/admin/users" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <Users />}/>
-                <Route path="/admin/product" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <Products />}/>
-                <Route path="/admin/product/create" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <ProductsCreate />}/>
-                <Route path="/admin/product/:id" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <ProductsUpdate />}/>
-                <Route path="/admin/events/create" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <EventCreate />}/>
-                <Route path="/admin/events/" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <Event />}/>
-                <Route path="/admin/events/:id" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <EventUpdate />}/>
-                <Route path="/admin/tables/" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <Tables />}/>
-                <Route path="/admin/tables/create" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <TableCreate />}/>  
-                <Route path="/admin/tables/:id" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <TableUpdate />}/>
-                <Route path="/admin/contact/" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <Contact />}/>
-                <Route path="/admin/orders/create" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <OrderCreate />}/>
-                <Route path="/admin/orders/" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <Order />}/>
-                <Route path="/admin/orders/:id" element={store.isLoading ?  <Loading /> : !store.isAuth  ? <LoginForm /> : <EventUpdate />}/>
+                <Route path="/admin" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin" ? <LoginForm /> :<div>Панель</div>}/>
+                <Route path="/admin/users" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <Users />}/>
+                <Route path="/admin/product" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <Products />}/>
+                <Route path="/admin/product/create" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <ProductsCreate />}/>
+                <Route path="/admin/product/:id" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <ProductsUpdate />}/>
+                <Route path="/admin/events/create" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <EventCreate />}/>
+                <Route path="/admin/events/" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <Event />}/>
+                <Route path="/admin/events/:id" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <EventUpdate />}/>
+                <Route path="/admin/tables/" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <Tables />}/>
+                <Route path="/admin/tables/create" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <TableCreate />}/>  
+                <Route path="/admin/tables/:id" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <TableUpdate />}/>
+                <Route path="/admin/contact/" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <Contact />}/>
+                <Route path="/admin/orders/create" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <OrderCreate />}/>
+                <Route path="/admin/orders/" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <Order />}/>
+                <Route path="/admin/orders/:id" element={store.isLoading ?  <Loading /> : !store.isAuth || toJS(store.user.role) != "admin"  ? <LoginForm /> : <EventUpdate />}/>
                 <Route path="*" element={<div>Error</div>}/>
             </Routes>
         </Layout> 
