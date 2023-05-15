@@ -10,7 +10,7 @@ export default class authService{
             const userid = tg.initDataUnsafe.user.id;
             return  $api.post<authResponse>('/api/auth/', {userid});
         }
-        return  $api.post<authResponse>('/api/auth/', {login, password});
+        return  $api.post<authResponse>('/api/auth/admin', {login, password});
     }
     static async logout(): Promise<void>{
         return $api.post('/api/auth/logout');
