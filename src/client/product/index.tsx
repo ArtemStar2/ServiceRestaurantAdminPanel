@@ -5,11 +5,13 @@ import OrderProduct from "./component/order";
 declare const window: any;
 
 const tg = window?.Telegram?.WebApp;
-console.log(tg);
+
 const MenuList : FC = () => {
+    console.log('asdsdsds');
+    console.log(tg);
     return (
         <div className="client">
-            
+            {JSON.stringify(tg, null, 2)}
             <SidebarProduct />
             <ListProduct />
             <OrderProduct />
