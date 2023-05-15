@@ -23,9 +23,17 @@ import MenuList from './client/product'
 import ProductOneClient from './client/product/component/itemPage'
 import OrderClient from './client/product/OrderClient'
 
+declare const window: any;
+
+const tg = window?.Telegram?.WebApp;
+
 const App = () => {
     const {store} = useContext(Context)
     useEffect(() => {
+        if(tg?.initDataUnsafe?.user?.id){
+            const userid = tg.initDataUnsafe.user.id;
+            store.auth(userid)
+        }
         if(localStorage.getItem('token')){
             store.chechAuth()
         }
