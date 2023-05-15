@@ -9,7 +9,7 @@ const tg = window?.Telegram?.WebApp;
 const MenuList : FC = () => {
     return (
         <div className="client">
-            <pre>{JSON.stringify(tg, null, 2)}</pre>
+            <pre>{JSON.stringify(tg.initDataUnsafe.user.id, null, 2)}</pre>
             
             <SidebarProduct />
             <ListProduct />
