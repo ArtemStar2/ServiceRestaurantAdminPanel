@@ -40,11 +40,6 @@ const OrderClient : FC = () => {
     return (
         <div className="client">
             <SidebarProduct />
-            {orders.length > 0 ? 
-                <Link to="/order/" className="orderClient__fixed">Корзина</Link>
-            :
-                <></>
-            }
             <div className="orderClient__list">
                 {orders?.map((order, index)=> 
                     <OrderProductOne key={order.id} index={index} value={order}/> 
