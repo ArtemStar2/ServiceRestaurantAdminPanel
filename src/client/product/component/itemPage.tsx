@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 import Loading from "../../../components/loading";
 import { Context } from "../../../main";
 import { observer } from "mobx-react-lite";
-import { ReactSVG } from "react-svg";
 import SidebarProduct from "./menu";
 import OrderProduct from "./order";
 
