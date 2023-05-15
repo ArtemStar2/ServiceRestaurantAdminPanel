@@ -11,7 +11,7 @@ const TableUpdate : FC = () => {
     const [item, setItem] = useState<ITable>();
     const [date, setDate] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(true)
-
+    const [table_id, setTable] = useState<string>('');
     useEffect(() => {
         getTables();
     }, [])
@@ -31,12 +31,13 @@ const TableUpdate : FC = () => {
         }
     }
 
-    const tableUpdate = async (id:any,date: string) => {
+    const tableUpdate = async (id:any,date: string, table_id: string) => {
         try {
             const formData = new FormData();
             formData.append("id", id);
             formData.append("date", date);
             formData.append("event", '');
+            formData.append("table_id", table_id);
             await tableService.TableUpdate(formData);
             toast.success('Успешно создан')
             return navigate("/admin/tables");
@@ -62,10 +63,19 @@ const TableUpdate : FC = () => {
                             type="datetime-local"
                             placeholder={'Дата'}
                         />
+                        <span>Номер столика</span>
+                        <input
+                            name={'table_id'}
+                            className='input__style'
+                            onChange={e => setTable(e.target.value)}
+                            value={table_id}
+                            type="number"
+                            placeholder={'Номер столика'}
+                        />
                     </div>
                 </div>
                 <div className="product__box three">
-                    <button className='users__add' onClick={() => tableUpdate(item?.id,date)}>Изменить бронь</button>
+                    <button className='users__add' onClick={() => tableUpdate(item?.id,date, table_id)}>Изменить бронь</button>
                 </div>
             </>
         }

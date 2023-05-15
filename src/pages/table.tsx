@@ -23,6 +23,7 @@ const Event : FC = () => {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }
     }
+    
     const tableDelete = async (id:string) => {
         try {
             await tableService.deleteTables(id)
@@ -33,7 +34,7 @@ const Event : FC = () => {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }
     }
-    console.log(tables)
+
     return (
         <>
         <div className="users__form">
@@ -48,6 +49,7 @@ const Event : FC = () => {
                     <span>Id Пользователя</span>
                     <span>Дата</span>
                     <span>Мероприятие</span>
+                    <span>Номер стола</span>
                     <span></span>
                 </li>
                 {tables?.map(table => 

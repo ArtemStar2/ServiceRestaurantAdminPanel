@@ -22,6 +22,9 @@ const TableItem : FC<TableItem> = ({value, tableDelete}) => {
             <span>
                 {value?.event}
             </span>
+            <span>
+                {value?.table_id}
+            </span>
             <div className="delete" onClick={() => tableDelete(value.id)}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" version="1.1" viewBox="0 0 32 32">
                     <g transform="scale(2)">

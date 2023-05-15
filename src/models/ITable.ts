@@ -3,4 +3,5 @@ export interface ITable{
     userid: number;
     date: string;
     event: string;
+    table_id: string;
 }
