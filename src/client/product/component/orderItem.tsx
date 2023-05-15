@@ -1,5 +1,4 @@
 import { FC, useContext, useEffect, useState } from "react";
-import { ReactSVG } from "react-svg";
 import toast from "react-hot-toast";
 import productService from "../../../services/productService";
 import { Context } from "../../../main";
@@ -47,7 +46,6 @@ const OrderProductOne : FC<CompOrder> = ({index, value}) => {
                 </g>
             </svg>
             </div>
-            <ReactSVG className="delete" onClick={() => deleteOrder(index)} src={"/src/assets/svg/delete.svg"} /> 
         </div>
     );
 };
