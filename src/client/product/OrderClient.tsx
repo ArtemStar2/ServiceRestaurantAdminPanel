@@ -18,7 +18,7 @@ const OrderClient : FC = () => {
     orders.forEach(value => {
         cost += value.price * value.count;
     })
-    
+
     let navigate = useNavigate();
     const orderCreate = async (userId: string, orders:any, table_id:string) => {
         try {
@@ -34,9 +34,17 @@ const OrderClient : FC = () => {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }
     }
+    if(orders.length == 0){
+        navigate("/menu/");
+    }
     return (
         <div className="client">
             <SidebarProduct />
+            {orders.length > 0 ? 
+                <Link to="/order/" className="orderClient__fixed">Корзина</Link>
+            :
+                <></>
+            }
             <div className="orderClient__list">
                 {orders?.map((order, index)=> 
                     <OrderProductOne key={order.id} index={index} value={order}/> 
