@@ -9,13 +9,13 @@ interface ProductItem{
 const ProductItemClient : FC<ProductItem> = ({value}) => {
     
     return (
-        <li className="product__item">
+        <Link to={'/product/' + value.id} className="product__item">
             <span className="name">
                 {value.id}
             </span>
-            <Link to={'/product/' + value.id}>
+            <span className="name">
                 <img src={import.meta.env.VITE_URL_DATABASE + import.meta.env.VITE_FILE + value.images} alt="" />
-            </Link>
+            </span>
             <span className="name">
                 {value.name}
             </span>
@@ -25,7 +25,7 @@ const ProductItemClient : FC<ProductItem> = ({value}) => {
             <span className="role">
                 {value.price} руб.  
             </span>
-        </li>
+        </Link>
     );
 };
 

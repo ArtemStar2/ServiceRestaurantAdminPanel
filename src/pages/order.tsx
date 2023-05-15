@@ -49,6 +49,7 @@ const Order : FC = () => {
                     <span>Дата</span>
                     <span>Сумма</span>
                     <span>Товары</span>
+                    <span>Стол</span>
                     <span></span>
                 </li>
                 {orders?.map(order => 

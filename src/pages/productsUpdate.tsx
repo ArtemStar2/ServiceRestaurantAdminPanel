@@ -19,6 +19,7 @@ const ProductsUpdate : FC = () => {
     const [description, setDescription] = useState<string>('');
     const [file, setFile] = useState<File | any>();
     const [price, setPrice] = useState<string>('');
+    const [price_old, setPriceOld] = useState<string>('');
     const [category, setCategory] = useState<'Еда' | 'Напитки' | 'Алкоголь' | any>();
 
     const options: any = [
@@ -45,6 +46,7 @@ const ProductsUpdate : FC = () => {
             setName(response.data.name)
             setDescription(response.data.description)
             setPrice(response.data.price)
+            setPriceOld(response.data.price_old);
             setCategory(options.filter(function(val:any) {
             return val.value == response.data.category;
             })[0])
@@ -64,7 +66,7 @@ const ProductsUpdate : FC = () => {
     //     }
     // }
 
-    const productUpdate = async (id: any,name: string, description: string, images:File, price: string, category: any) => {
+    const productUpdate = async (id: any,name: string, description: string, images:File, price: string, price_old:string, category: any) => {
         try {
             const formData = new FormData();
             formData.append("id", id);
@@ -73,6 +75,7 @@ const ProductsUpdate : FC = () => {
             formData.append("images", images);
             formData.append("price", price);
             formData.append("category", category.value);
+            formData.append("price_old", price_old);
             await productService.productUpdate(formData);
             toast.success('Успешно изменён')
             return navigate("/admin/product");
@@ -127,6 +130,17 @@ const ProductsUpdate : FC = () => {
                         />
                     </div>
                     <div className="box">
+                        <span>Старая цена</span>
+                        <input
+                            name={'price_old'}
+                            className='input__style'
+                            onChange={e => setPriceOld(e.target.value)}
+                            value={price_old}
+                            type="number"
+                            placeholder={'Старая цена'}
+                        />
+                    </div>
+                    <div className="box">
                         <span>Категория</span>
                         <Select
                             className="react-select-container"
@@ -136,7 +150,7 @@ const ProductsUpdate : FC = () => {
                             options={options}
                         />
                     </div>
-                    <button className='users__add' onClick={() => productUpdate(product?.id, name, description, file, price, category)}>Изменить товар</button>
+                    <button className='users__add' onClick={() => productUpdate(product?.id, name, description, file, price, price_old, category)}>Изменить товар</button>
                 </div>
             </>
         }

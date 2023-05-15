@@ -31,13 +31,14 @@ const OrderItem : FC<OrderItem> = ({value, deleteOrder}) => {
             toast.error('Ошибка: ' + error?.response?.data?.massage)
         }
     }
+    console.log(products);
     return (
         <li className="order__item">
             <span className="name">
                 {value.id}
             </span>
             <span>
-                {value.userId}
+                {value.userid}
             </span>
             <span>
                 {value.date.split('T')[0] + '  ' + value.date.split('T')[1]}
@@ -47,10 +48,11 @@ const OrderItem : FC<OrderItem> = ({value, deleteOrder}) => {
                 {products?.map((product:any) => 
                     <span className="order__product" key={product.id}>
                         <span className="name">{product.name}</span>
-                        <span className="cost">{product.price} руб.</span>
+                        <span className="cost">{product.count} * {product.price} руб.</span>
                     </span>
                 )}
-            </span>       
+            </span> 
+            <span>{value.table_id}</span>      
             <ReactSVG className="delete" onClick={() => deleteOrder(value.id)} src={"/src/assets/svg/delete.svg"} /> 
         </li>
     );

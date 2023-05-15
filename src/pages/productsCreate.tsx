@@ -9,6 +9,7 @@ const ProductsCreate : FC = () => {
     const [description, setDescription] = useState<string>('');
     const [file, setFile] = useState<File | any>();
     const [price, setPrice] = useState<string>('');
+    const [price_old, setPriceOld] = useState<string>('');
     const [category, setCategory] = useState<'Еда' | 'Напитки' | 'Алкоголь' | any>();
 
     const options: any = [
@@ -24,7 +25,7 @@ const ProductsCreate : FC = () => {
         }
     };
     let navigate = useNavigate();
-    const productCreate = async (name: string, description: string, images:File, price: string, category: any) => {
+    const productCreate = async (name: string, description: string, images:File, price: string, price_old:string, category: any) => {
         try {
             console.log(images);
             const formData = new FormData();
@@ -33,6 +34,7 @@ const ProductsCreate : FC = () => {
             formData.append("images", images);
             formData.append("price", price);
             formData.append("category", category.value);
+            formData.append("price_old", price_old);
             await productService.createProducts(formData);
             toast.success('Успешно создан')
             return navigate("/admin/product");
@@ -82,6 +84,17 @@ const ProductsCreate : FC = () => {
                 />
             </div>
             <div className="box">
+                <span>Старая цена</span>
+                <input
+                    name={'price_old'}
+                    className='input__style'
+                    onChange={e => setPriceOld(e.target.value)}
+                    value={price_old}
+                    type="number"
+                    placeholder={'Старая цена'}
+                />
+            </div>
+            <div className="box">
                 <span>Категория</span>
                 <Select
                     className="react-select-container"
@@ -91,7 +104,7 @@ const ProductsCreate : FC = () => {
                     options={options}
                 />
             </div>
-            <button className='users__add' onClick={() => productCreate(name, description, file, price, category)}>Добавить товар</button>
+            <button className='users__add' onClick={() => productCreate(name, description, file, price, price_old, category)}>Добавить товар</button>
         </div>
         </> 
     );

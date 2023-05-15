@@ -5,4 +5,6 @@ export interface IProduct{
     images:string;
     price:string;
     category: 'Еда' | 'Напитки' | 'Алкоголь';
+    stock?: boolean;
+    price_old:string;
 }

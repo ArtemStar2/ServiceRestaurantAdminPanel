@@ -1,6 +1,7 @@
 export interface IOrder{
     id: string;
-    userId: string;
+    userid: string;
     products: string;
     date:string;
+    table_id:string;
 }

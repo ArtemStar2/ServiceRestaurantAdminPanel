@@ -11,8 +11,8 @@ export default class eventService{
         return $api.get<IEvent>('/api/events/' + id)
     }
     
-    static deleteEvents(EventId: string):Promise<AxiosResponse<ResponseSolo>>{
-        return $api.post<ResponseSolo>('/api/events/delete', {EventId})
+    static deleteEvents(eventId: string):Promise<AxiosResponse<ResponseSolo>>{
+        return $api.post<ResponseSolo>('/api/events/delete', {eventId})
     }
     static EventUpdate(data: FormData):Promise<AxiosResponse<IEvent>>{
         return $api.post<IEvent>('/api/events/update', data, {

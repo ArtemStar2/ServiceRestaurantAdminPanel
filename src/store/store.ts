@@ -6,10 +6,32 @@ import { authResponse } from "../models/response/authResponse";
 import { API_URL } from "../http";
 import toast from "react-hot-toast";
 
+interface Order{
+    id: string | undefined;
+    count: number;
+    price: number;
+}
+function addObjectToArray(array:any, object:any) {
+    const index = array.findIndex((item:any) => item.id === object.id);
+    if (index === -1) {
+      array.push(object);
+    } else {
+      array[index].count += object.count;
+    }
+    return array;
+}
+
+function removeItemByIndex(array:any, index:any) {
+    if (index > -1 && index < array.length) {
+      array.splice(index, 1);
+    }
+    return array;
+}
 export default class Store{
     user = {} as IUser
     isAuth = false;
     isLoading = false;
+    order = [] as Order[];
 
     constructor(){
         makeAutoObservable(this, {}, { autoBind: true });
@@ -22,6 +44,18 @@ export default class Store{
     }
     setLoading(bool: boolean){
         this.isLoading = bool;
+    }
+    addOrder(id: string | undefined, count: number, price:number){
+        addObjectToArray(this.order, {id: id, count: count, price: price})
+        // this.order.push({id: id, count: count, price: price});  
+    }
+    deleteOrder(index: number){
+        removeItemByIndex(this.order, index)
+        // this.order.push({id: id, count: count, price: price});  
+    }
+    clearOrder(){
+        this.order = [];
+        // this.order.push({id: id, count: count, price: price});  
     }
     async auth(login: string, password: string){
         const id = toast.loading("Загрузка ...")
