@@ -9,7 +9,7 @@ console.log(tg);
 const MenuList : FC = () => {
     return (
         <div className="client">
-            {...tg}
+            
             <SidebarProduct />
             <ListProduct />
             <OrderProduct />
