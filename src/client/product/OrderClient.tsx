@@ -46,15 +46,19 @@ const OrderClient : FC = () => {
                 )}
             </div>
             <div className="info">
-                <input
-                    name={'table_id'}
-                    className='input__style'
-                    onChange={e => setTable(e.target.value)}
-                    value={table_id}
-                    type="number"
-                    placeholder={'Старая цена'}
-                />
-                {cost}
+                <div className="two">
+                    <input
+                        name={'table_id'}
+                        className='input__style'
+                        onChange={e => setTable(e.target.value)}
+                        value={table_id}
+                        type="number"
+                        placeholder={'Номер стола'}
+                    />
+                    <span className="allCost">
+                    {cost}
+                    </span>
+                </div>
                 <button className='users__add' onClick={() => orderCreate(toJS(store.user.id), orders, table_id)}>Заказать</button>
             </div>
             
