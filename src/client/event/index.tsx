@@ -13,7 +13,7 @@ const EventList : FC = () => {
     useEffect(() => {
         getEvents();
     }, [])
-
+    
     async function getEvents() {
         try {
             const response = await eventService.fetchEvent()
